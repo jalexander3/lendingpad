@@ -1,9 +1,10 @@
-﻿using System;
+﻿using BusinessEntities;
+using Core.Services.Users;
+using System;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using BusinessEntities;
-using Core.Services.Users;
 using WebApi.Models.Users;
 
 namespace WebApi.Controllers
@@ -28,8 +29,16 @@ namespace WebApi.Controllers
         [HttpPost]
         public HttpResponseMessage CreateUser(Guid userId, [FromBody] UserModel model)
         {
-            var user = _createUserService.Create(userId, model.Name, model.Email, model.Type, model.AnnualSalary, model.Tags);
-            return Found(new UserData(user));
+            try
+            {
+                var user = _createUserService.Create(userId, model.Name, model.Email, model.Type, model.AnnualSalary, model.Tags);
+                return Found(new UserData(user));
+            }
+            catch (InvalidOperationException)
+            {
+                // TODO Log exception if needed
+                return Request.CreateErrorResponse(HttpStatusCode.Conflict, "A user with this ID already exists.");
+            }
         }
 
         [Route("{userId:guid}/update")]

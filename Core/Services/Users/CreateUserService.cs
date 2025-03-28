@@ -23,10 +23,15 @@ namespace Core.Services.Users
 
         public User Create(Guid id, string name, string email, UserTypes type, decimal? annualSalary, IEnumerable<string> tags)
         {
+            var existing = _userRepository.Get(id);
+            if (existing != null)
+                throw new InvalidOperationException("User already exists.");
+
             var user = _userFactory.Create(id);
             _updateUserService.Update(user, name, email, type, annualSalary, tags);
             _userRepository.Save(user);
             return user;
         }
+
     }
 }
