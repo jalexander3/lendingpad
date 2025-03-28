@@ -72,9 +72,12 @@ namespace BusinessEntities
             _type = type;
         }
 
-        public void SetAge(int age)
+        public void SetAge(int? age)
         {
-            _age = age;
+            if (!age.HasValue)
+                throw new ArgumentNullException(nameof(age), "Age must be provided.");
+
+            _age = age.Value;
         }
 
         public void SetMonthlySalary(decimal? monthlySalary)

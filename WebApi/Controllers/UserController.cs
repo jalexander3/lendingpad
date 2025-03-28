@@ -31,7 +31,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                var user = _createUserService.Create(userId, model.Name, model.Email, model.Type, model.AnnualSalary, model.Tags);
+                var user = _createUserService.Create(userId, model.Name, model.Email, model.Type, model.AnnualSalary, model.Age, model.Tags);
                 return Found(new UserData(user));
             }
             catch (InvalidOperationException)
@@ -53,7 +53,7 @@ namespace WebApi.Controllers
                     return DoesNotExist();
                 }
 
-                _updateUserService.Update(user, model.Name, model.Email, model.Type, model.AnnualSalary, model.Tags);
+                _updateUserService.Update(user, model.Name, model.Email, model.Type, model.AnnualSalary, model.Age, model.Tags);
                 return Found(new UserData(user));
             }
             catch (ArgumentNullException ex)
