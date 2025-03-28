@@ -1,6 +1,7 @@
 ﻿using BusinessEntities;
 using Core.Services.Users;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -104,9 +105,15 @@ namespace WebApi.Controllers
 
         [Route("list/tag")]
         [HttpGet]
-        public HttpResponseMessage GetUsersByTag(string tag)
+        public HttpResponseMessage GetUsersByTags([FromUri] IEnumerable<string> tag)
         {
-            throw new NotImplementedException();
+            if (tag == null || !tag.Any())
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "At least one tag must be specified.");
+            }
+
+            var users = _getUserService.GetUsers(tags: tag);
+            return Found(users);
         }
     }
 }
