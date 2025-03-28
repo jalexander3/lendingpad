@@ -79,6 +79,9 @@ namespace BusinessEntities
 
         public void SetMonthlySalary(decimal? monthlySalary)
         {
+            if (!monthlySalary.HasValue)
+                throw new ArgumentNullException(nameof(monthlySalary), "Monthly salary must be provided.");
+
             _monthlySalary = monthlySalary;
         }
 
