@@ -45,13 +45,21 @@ namespace WebApi.Controllers
         [HttpPost]
         public HttpResponseMessage UpdateUser(Guid userId, [FromBody] UserModel model)
         {
-            var user = _getUserService.GetUser(userId);
-            if (user == null)
+            try
             {
-                return DoesNotExist();
+                var user = _getUserService.GetUser(userId);
+                if (user == null)
+                {
+                    return DoesNotExist();
+                }
+
+                _updateUserService.Update(user, model.Name, model.Email, model.Type, model.AnnualSalary, model.Tags);
+                return Found(new UserData(user));
             }
-            _updateUserService.Update(user, model.Name, model.Email, model.Type, model.AnnualSalary, model.Tags);
-            return Found(new UserData(user));
+            catch (ArgumentNullException ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+            }
         }
 
         [Route("{userId:guid}/delete")]
