@@ -113,7 +113,7 @@ namespace WebApi.Controllers
             }
 
             var users = _getUserService.GetUsers(tags: tag);
-            return Found(users);
+            return Found(users.Select(user => new UserData(user)));
         }
     }
 }
