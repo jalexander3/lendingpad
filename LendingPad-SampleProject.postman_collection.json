@@ -1,0 +1,719 @@
+{
+	"info": {
+		"_postman_id": "5c041cfe-290f-48dc-b523-0d051de482f1",
+		"name": "LendingPad-SampleProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20147299"
+	},
+	"item": [
+		{
+			"name": "Initialize Sample Data",
+			"item": [
+				{
+					"name": "Clear Users",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:49834/users/clear",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49834",
+							"path": [
+								"users",
+								"clear"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User - John",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"John Smith\",\r\n    \"email\": \"mark@companya.com\",\r\n    \"type\": 2,\r\n    \"age\": 27,\r\n    \"annualSalary\": 72000,\r\n    \"tags\": [\"A\", \"C\", \"D\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49834/users/1422740e-6426-4c46-8445-3f5274a62424/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49834",
+							"path": [
+								"users",
+								"1422740e-6426-4c46-8445-3f5274a62424",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User - Mark",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mark Williams\",\r\n    \"email\": \"mark@companya.com\",\r\n    \"type\": 1,\r\n    \"age\": 35,\r\n    \"annualSalary\": 120000,\r\n    \"tags\": [\"b\", \"c\", \"e\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49834/users/9422740e-6426-4c46-8445-3f5274a62424/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49834",
+							"path": [
+								"users",
+								"9422740e-6426-4c46-8445-3f5274a62424",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User - Andy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Andy\",\r\n    \"email\": \"andy@companya.com\",\r\n    \"type\": 2,\r\n    \"age\": 34,\r\n    \"annualSalary\": 86000,\r\n    \"tags\": [\"D\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49834/users/8722740e-6426-4c46-8445-3f5274a62424/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49834",
+							"path": [
+								"users",
+								"8722740e-6426-4c46-8445-3f5274a62424",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User - Jeremy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Jeremy\",\r\n    \"email\": \"jeremy@companya.com\",\r\n    \"type\": 2,\r\n    \"age\": 41,\r\n    \"annualSalary\": 165000,\r\n    \"tags\": [\"D\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49834/users/8722740e-6426-4c46-8445-3f5274a62124/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49834",
+							"path": [
+								"users",
+								"8722740e-6426-4c46-8445-3f5274a62124",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "//The exception \"PUT attempted on document 'users/1422740e-6426-4c46-8445-3f5274a62424' using a non current etag\" means that the record with the same ID already exists.\r\n{\r\n    \"name\": \"Mary\",\r\n    \"email\": \"mary@companya.com\",\r\n    \"type\": 1,\r\n    \"age\": 29,\r\n    \"annualSalary\": 80000,\r\n    \"tags\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49834/users/{{user1}}/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49834",
+							"path": [
+								"users",
+								"{{user1}}",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User - A",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mark Williams (updated)\",\r\n    \"email\": null,\r\n    \"type\": 2,\r\n    \"age\": 29,\r\n    \"annualSalary\": 80000,\r\n    \"tags\": [\"A\", \"C\", \"D\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49834/users/{{user2}}/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49834",
+							"path": [
+								"users",
+								"{{user2}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User - B",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mark Williams\",\r\n    \"email\": \"mark@companya.com\",\r\n    \"type\": 1,\r\n    \"age\": 29,\r\n    \"annualSalary\": null,\r\n    \"tags\": [\"A\", \"C\", \"D\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49834/users/9422740e-6426-4c46-8445-3f5274a62424/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49834",
+							"path": [
+								"users",
+								"9422740e-6426-4c46-8445-3f5274a62424",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User - C",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mark Williams\",\r\n    \"email\": \"mark@companya.com\",\r\n    \"type\": 1,\r\n    \"age\": 50,\r\n    \"annualSalary\": 200000,\r\n    \"tags\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49834/users/9422740e-6426-4c46-8445-3f5274a62424/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49834",
+							"path": [
+								"users",
+								"9422740e-6426-4c46-8445-3f5274a62424",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users By Tag",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:49834/users/list/tag?tag=D&tag=A",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49834",
+							"path": [
+								"users",
+								"list",
+								"tag"
+							],
+							"query": [
+								{
+									"key": "tag",
+									"value": "D"
+								},
+								{
+									"key": "tag",
+									"value": "A"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Requests",
+			"item": [
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "Create Product - 1",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Sample Product 1\",\n  \"sku\": \"SKU-001\",\n  \"description\": \"A simple test product.\",\n  \"price\": 55.99,\n  \"stock\": 200,\n  \"tags\": [\"test\",\"another\"]\n}"
+								},
+								"url": {
+									"raw": "{{host}}api/products/{{product1}}/create",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"products",
+										"{{product1}}",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Product - 2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Sample Product 2\",\n  \"sku\": \"SKU-002\",\n  \"description\": \"A simple test product.\",\n  \"price\": 35.99,\n  \"stock\": 100,\n  \"tags\": [\"great\"]\n}"
+								},
+								"url": {
+									"raw": "{{host}}api/products/{{product2}}/create",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"products",
+										"{{product2}}",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Product",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"Updated Product\",\n  \"sku\": \"SKU-001\",\n  \"description\": \"Updated description.\",\n  \"price\": 108.99,\n  \"stock\": 5,\n  \"tags\": [\"updated\"]\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/products/{{product1}}/update",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"{{product1}}",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Product by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}api/products/{{product1}}",
+									"host": [
+										"{{host}}api"
+									],
+									"path": [
+										"products",
+										"{{product1}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get ALL",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/products/list",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Product",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/products/{{product1}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"{{product1}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "Create Order",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"userId\": \"{{user1}}\",\n  \"orderDate\": \"2024-04-01T12:00:00Z\",\n  \"products\": {\n    \"{{product1}}\":4,\n    \"{{product2}}\":2\n  }\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/orders/{{order1}}/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"orders",
+										"{{order1}}",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Order - NO PRODUCTS",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"userId\": \"{{user1}}\",\n  \"orderDate\": \"2024-04-01T12:00:00Z\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/orders/{{order2}}/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"orders",
+										"{{order2}}",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Order",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"userId\": \"{{user1}}\",\n  \"orderDate\": \"2024-04-02T10:30:00Z\",\n    \"products\": {\n    \"{{product1}}\":4\n  }\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/orders/{{order1}}/update",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"orders",
+										"{{order1}}",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Order by ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/orders/{{order1}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"orders",
+										"{{order1}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Order",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/orders/{{order1}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"orders",
+										"{{order1}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Order 2",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"userId\": \"{{user2}}\",\n  \"orderDate\": \"2024-04-01T12:00:00Z\",\n  \"products\": {\n    \"{{product2}}\":6\n  }\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/orders/{{order2}}/create",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"orders",
+										"{{order2}}",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Orders List (Filtered)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/api/orders/list?fromDate=2024-03-11T12:00:00Z&toDate=2024-03-31T12:00:00Z",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"orders",
+										"list"
+									],
+									"query": [
+										{
+											"key": "userId",
+											"value": "{{user1}}",
+											"disabled": true
+										},
+										{
+											"key": "products",
+											"value": "{{product2}}",
+											"disabled": true
+										},
+										{
+											"key": "fromDate",
+											"value": "2024-03-11T12:00:00Z"
+										},
+										{
+											"key": "toDate",
+											"value": "2024-03-31T12:00:00Z"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "product1",
+			"value": "bfa2e493-c217-44d4-82cd-88ef2c627087",
+			"type": "string"
+		},
+		{
+			"key": "product2",
+			"value": "a3add051-0994-4679-a1d0-14a48da9f4a1",
+			"type": "string"
+		},
+		{
+			"key": "host",
+			"value": "http://localhost:49834/",
+			"type": "string"
+		},
+		{
+			"key": "order1",
+			"value": "80072dd2-7b23-4dc1-93d0-7fe9690a9dd4",
+			"type": "string"
+		},
+		{
+			"key": "order2",
+			"value": "d8542ecd-4a10-4dd6-b31f-1f66f7e9c4e5",
+			"type": "string"
+		},
+		{
+			"key": "user1",
+			"value": "1422740e-6426-4c46-8445-3f5274a62424",
+			"type": "default"
+		},
+		{
+			"key": "user2",
+			"value": "9422740e-6426-4c46-8445-3f5274a62424",
+			"type": "default"
+		}
+	]
+}
